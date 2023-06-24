@@ -1,0 +1,58 @@
+---
+- name: install tomcat10
+  hosts: all
+  become: yes
+  tasks:
+    - name: check if play being on support os
+      ansible.builtin.fail:
+        msg: tha playbook designed for only ubuntu
+      when: ansible_facts['distribution']! = "ubuntu"
+    - name: installing java
+      ansible.builtin.apt:
+        name: openjdk-11-jdk
+        update_cache: yes
+        state: present
+    - name: creating group
+      ansible.builtin.group:
+        name: tomcat
+        state: present
+    - name: creating user
+      ansible.builtin.user:
+        name: tomcat
+        group: tomcat
+        home: /opt/tomcat
+        shell: /bin/false
+        state: present
+    - name: dowload the tomcat
+      ansible.builtin.get_url:
+        url: wget https://www-eu.apache.org/dist/tomcat/tomcat-10/v10.1.9/bin/apache-tomcat-10.1.9.tar.gz
+        dest: /opt/tomcat
+        owner: tomcat
+        group: tomcat
+    - name: extrct the tomcat
+      ansible.builtin.unarchive:
+        src: /tmp/apache-tomcat-${VERSION}.tar.gz 
+        dest: /opt/tomcat/
+        group: tomcat
+        owner: tomcat
+        remote_src: true
+    - name: create a symbolic link
+      ansible.builtin.file:
+        src: /opt/tomcat/apache-tomcat-10.1.9
+        dest: /opt/tomcat/latest
+        owner: tomcat
+        group: tomcat
+        recurse: yes
+        state: link
+    - name: change the permissions to tomcat
+      ansible.builtin.file:
+        dest: /opt/tomcat
+        group: tomcat
+        owner: tomcat
+        state: file
+    - name: addded executable permissions to shell 
+      ansible.builtin.command: sh -c 'chmod +x /opt/tomcat/latest/bin/*.sh'
+    - name: ensure tomcat is enable and running 
+      ansible.builtin.systemd:
+        name: tomcat service
+        state: started
