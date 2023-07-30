@@ -78,8 +78,8 @@ Control Node:
 Managed Node(Master Node): 
 -------------
 Machines that you manage with Ansible
-Inventory:
------------
+Inventory or Inventory file:
+------------------------------
  List of managed nodes, default file location is /etc/ansible/hosts
 Modules:
 --------- 
