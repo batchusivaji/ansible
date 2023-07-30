@@ -1,7 +1,8 @@
 ansible
 --------
 what is ansible?
-	 ansible is a configuration management tool... 
+1.ansible is a configuration management tool... 
+2.Ansible is a simple, powerful, cross-platform, and agentless IT automation tool that everyone can use for their needs.
 what is configuration management tool?
 	it is maintain number(100 and 1000's) of machines with automation
 
@@ -49,12 +50,6 @@ how to install ansible?
  i)playbooks (all tasks place in one .yml file and run it)
  ii)ad-hoc (on the command line we perform this)
 
-perform some commands 
- - ansible -m ping (node)
- - ansible -m shell -a "yum - y install httpd" (node)
- - ansible -m shell -a "systemctl start httpd" (node)
- - ansible -m service -a "name=httpd state=started"
-
 
 ansible playbooks:
 ------------------
@@ -65,56 +60,31 @@ Q)how playbook works?
 	playbook works with modules(yum,service,file,etc..), and inventory file(/etc/ansible/hosts) over ssh communication.
 
 Q)what we need to run playbook ?
-	we need to specify target, tasks in playbook with modules(yum, file, etc..)
-
-
-Q)how playbook start?
-
----
-- name: sample playbook
-  hosts: target host (or) hosts name specified in (/etc/anisble/hosts)
-  tasks:
-  - name:
-
-1)creation sample file	- file
-2)install application (httpd)	- yum
-3)start service (httpd)	- service
-4)copy file (index.html)	- template
-
+	we need to specify target, tasks in playbook with modules(apt oryum, file, etc..)
 
 ansible role:
 ------------
-	- place the group of playbooks in one file. it will help reduce the code complexity, and increase the code reusability.
+ 1.place the group of playbooks in one file. it will help reduce the code complexity, and increase the code reusability.
+ 2.There's a large playbook file with hundreds lines of code. It's frustrating to maintain, change, and support it. We must cut this huge file into smaller files and use a single master playbook to control these files using - include <playbook name> in the master playbook
 
-# ansible-galaxy init lamp
-- lamp was created successfully
+Ansible-Galaxy:-
+Galaxy is your hub for finding, reusing and sharing the best Ansible content.
 
- -- lamp
-|-- README.md
-|-- defaults
-| `-- main.yml
-|-- files
-|-- handlers
-| `-- main.yml
-|-- meta
-| `-- main.yml
-|-- tasks
-| `-- main.yml
-|-- templates
-|-- tests
-| |-- inventory
-| `-- test.yml
-`-- vars
-`-- main.yml
-
-in tasks main file:
--------------------
----
-# tasks file for apache
-- include_tasks: httpd.yml
-- include_tasks: php.yml
-- include_tasks: mysql.yml
-
-syntax check:
+Control Node:
 -------------
-ansible-playbook mylamp.yml --syntax-check
+ Machine with Ansible installed
+Managed Node: 
+-------------
+Machines that you manage with Ansible
+Inventory:
+-----------
+ List of managed nodes, default file location is /etc/ansible/hosts
+Modules:
+--------- 
+Unit of code that Ansible executes
+Tasks: 
+-------
+Unit of action in Ansible
+Playbooks: 
+-----------
+Ordered list of tasks
