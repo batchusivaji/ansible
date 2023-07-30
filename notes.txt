@@ -17,6 +17,17 @@ what it maintain ?
 	2)configuration
 	3)updates
 	4)maintain and so on..
+Features of Ansible:
+  * It's agentless, so you don't need to install and manage an agent on the servers you need to run ansible on.
+  * It uses SSH to establish secure connections.
+  * It follows push bases architecture.
+  * It is built on top of python, so it has a lot of functionalities of python built-in.
+Setup Password-less SSH Connection:
+  * Public-Private key encryption
+  * Generate keys using ssh-keygen command
+  * Transfer keys using ssh-copy-id command: ssh-copy-id USER@SERVER_IP
+  * Validate
+
 
 why configuration management tool?
 	->reduce management complexity
@@ -80,7 +91,10 @@ ansible role:
 
 Ansible-Galaxy:-
 Galaxy is your hub for finding, reusing and sharing the best Ansible content.
-
+Ansible-Inventory:
+Inventory file (host file) contains the list of all the servers which you want to perform some tasks on them.
+ Adv:It's good to separate servers for their specific purposes on different groups, and add all servers in a single group so that you can access all of them at once.
+ example:/etc/ansible/hosts
 Control Node:
 -------------
  where we have Machine with Ansible installed
