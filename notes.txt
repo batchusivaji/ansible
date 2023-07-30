@@ -75,7 +75,7 @@ Galaxy is your hub for finding, reusing and sharing the best Ansible content.
 Control Node:
 -------------
  where we have Machine with Ansible installed
-Managed Node: 
+Managed Node(Master Node): 
 -------------
 Machines that you manage with Ansible
 Inventory:
