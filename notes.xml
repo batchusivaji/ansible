@@ -55,7 +55,8 @@ how the master communicate with slaves?
 ansible playbooks:
 ------------------
 Q)what is playbook?
-	playbook is a set of instructions file. to do a particular tasks on target(host) or group of target(hosts).
+    1.the collection of play 
+	2.playbook is a set of instructions file. to do a particular tasks on target(host) or group of target(hosts).
 
 Q)how playbook works?
 	playbook works with modules(yum,service,file,etc..), and inventory file(/etc/ansible/hosts) over ssh communication.
@@ -73,7 +74,7 @@ Galaxy is your hub for finding, reusing and sharing the best Ansible content.
 
 Control Node:
 -------------
- Machine with Ansible installed
+ where we have Machine with Ansible installed
 Managed Node: 
 -------------
 Machines that you manage with Ansible
@@ -88,4 +89,4 @@ Tasks:
 Unit of action in Ansible
 Playbooks: 
 -----------
-Ordered list of tasks
+we have to excute Ordered list of tasks
