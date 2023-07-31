@@ -8,9 +8,13 @@ what is configuration management tool?
 Why Ansible:
  * Provisioning
  * Configuration Management
- * Continuous Delivery
+ * Continuous Deployment
  * Application Deployment
- * Security Compliance
+ * Security Compliance or Automation
+ * Infrastructure Orchestration 
+ * IT automation
+Advantages of Ansible:
+ 1)
 what it maintain ?
 	it maintain the system resources such as
     1)install a application
@@ -95,6 +99,14 @@ Ansible-Inventory:
 Inventory file (host file) contains the list of all the servers which you want to perform some tasks on them.
  Adv:It's good to separate servers for their specific purposes on different groups, and add all servers in a single group so that you can access all of them at once.
  example:/etc/ansible/hosts
+ * Inventory in Ansible represents the hosts which we need to connect to.
+ * Ansible inventory is broadly classified into teo types
+    1).static inventory: where we mention the list of nodes to connect to in some file
+     Static inventory can be mentioned in two formats
+     * ini
+     * yaml
+    2).dynamic inventory:  where we mention some script/plugin which will dynamically find out the nodes to connect to
+
 Control Node:
 -------------
  where we have Machine with Ansible installed
@@ -106,10 +118,13 @@ Inventory or Inventory file:
  List of managed nodes, default file location is /etc/ansible/hosts
 Modules:
 --------- 
-Unit of code that Ansible executes
+Unit of code that Ansible executes or In ansible the smallest unit of work is perfomed by module
 Tasks: 
 -------
 Unit of action in Ansible
 Playbooks: 
 -----------
 we have to excute Ordered list of tasks
+Check for syntax of playbook
+-----------------------------
+ansible-playbook -i <inventory-path> --syntax-check <playbook-path>
