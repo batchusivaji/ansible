@@ -36,11 +36,6 @@ Setup Password-less SSH Connection:
 why configuration management tool?
 	->reduce management complexity
 	->save time
-
-infrastructure as a code:
-------------------------
-- with the code we can manage the infrastructure
-	
 configuration management tools(CM):
 1.There are two types of CM
    1.Pull based CM
