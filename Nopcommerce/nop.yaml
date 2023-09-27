@@ -3,18 +3,18 @@
   hosts: all
   become: yes
   tasks:
-    - name: updata packages and install .net7
+    - name: update packages and install .net7
       apt:
         name: dotnet-sdk-7.0
         update_cache: yes
         state: present
-    # - name: create a directory nop
-    #   ansible.builtin.file:
-    #   path: nop
-    #   owner: nop
-    #   group: nop
-    #   mode: 0755
-    #   state: directory
+    - name: create a directory nop
+      ansible.builtin.file:
+      path: nop
+      owner: nop
+      group: nop
+      mode: 0755
+      state: directory
     # - name: change directory to nop
     #   ansible.builtin.shell:
     #   shell: /nop
