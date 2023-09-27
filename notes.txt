@@ -16,8 +16,8 @@ Why Ansible:
 Advantages of Ansible:
  1)
 what it maintain ?
-	it maintain the system resources such as
-    1)install a application
+it maintain the system resources such as
+  1)install a application
 	2)configuration
 	3)updates
 	4)maintain and so on..
@@ -75,7 +75,7 @@ how the master communicate with slaves?
 ansible playbooks:
 ------------------
 Q)what is playbook?
-    1.the collection of play 
+  1.the collection of play 
 	2.playbook is a set of instructions file. to do a particular tasks on target(host) or group of target(hosts).
 
 Q)how playbook works?

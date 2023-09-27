@@ -1,0 +1,23 @@
+---
+- name: install php server on ubuntu
+  hosts: all
+  become: yes
+  tasks:
+    - name: update packages and install apache server
+      ansible.builtin.yum:
+        name: httpd
+        update_cache: yes
+        state: present
+    - name: enable and start apache server
+      ansible.builtin.systemd_service:
+        name: httpd
+        enabled: yes
+        state: restarted
+    - name: copy the info.php file 
+      ansible.builtin.copy:
+        src: info.php
+        dest: /var/www/html/info.php
+    - name: restart apache
+      ansible.builtin.systemd:
+        name: httpd
+        state: restarted

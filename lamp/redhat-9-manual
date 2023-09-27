@@ -1,0 +1,9 @@
+sudo yum update
+sudo yum install httpd
+sudo systemctl start httpd
+sudo yum install php -y
+sudo -i
+echo '<?php phpinfo(); ?>' > /var/www/html/info.php
+sudo systemctl restart httpd
+
+
