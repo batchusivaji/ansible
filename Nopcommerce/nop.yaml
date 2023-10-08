@@ -28,6 +28,7 @@
       ansible.builtin.unarchive:
         src: nop/nopCommerce_4.60.4_NoSource_linux_x64.zip
         dest: nop/
+        remote_src: yes
     - name: start the NopCommerce
       ansible.builtin.shell:
         shell: dontet Nop.Web.dll --urls "http://0.0.0.0:5000"
