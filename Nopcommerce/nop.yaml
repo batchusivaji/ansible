@@ -44,4 +44,4 @@
 
     - name: start the NopCommerce
       ansible.builtin.shell:
-        shell: dontet Nop.Web.dll --urls "http://0.0.0.0:5000"
+        dontet Nop.Web.dll --urls "http://0.0.0.0:5000"
