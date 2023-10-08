@@ -27,8 +27,17 @@
     - name: unzip the NopCommerce
       ansible.builtin.unarchive:
         src: nop/nopCommerce_4.60.4_NoSource_linux_x64.zip
-        dest: nop/
+        dest: /home/dev/nop
         remote_src: yes
+    - name: creating a two folders
+      ansible.builtin.file:
+        path: 
+          - nop/bin
+          - nop/logs
+        mode: '0755'
+        state: directory
+        recurse: yes
+
     - name: start the NopCommerce
       ansible.builtin.shell:
         shell: dontet Nop.Web.dll --urls "http://0.0.0.0:5000"
