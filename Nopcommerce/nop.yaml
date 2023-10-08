@@ -43,4 +43,4 @@
         recurse: yes
 
     - name: start the NopCommerce
-      ansible.builtin.command: "dontet Nop.Web.dll --urls "http://0.0.0.0:5000""
+      ansible.builtin.command: "dontet Nop.Web.dll --urls 'http://0.0.0.0:5000'"
