@@ -11,8 +11,8 @@
     - name: create a directory nop
       ansible.builtin.file:
         path: /nop
-        owner: nop
-        group: nop
+        # owner: nop
+        # group: nop
         mode: '0755'
         state: directory
         recurse: yes
