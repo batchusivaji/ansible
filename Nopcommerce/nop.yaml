@@ -10,34 +10,34 @@
         state: present
     - name: create a directory nop
       ansible.builtin.file:
-        path: nop
+        path: cloud
         mode: '0755'
         state: directory
         recurse: yes
-    - name: change directory to nop
-      ansible.builtin.shell: cd nop
+    - name: change directory to cloud
+      ansible.builtin.shell: cd cloud
     - name: download NopCommerce
       ansible.builtin.get_url:
-        url: "https://github.com/nopSolutions/nopCommerce/releases/download/release-4.60.4/nopCommerce_4.60.4_NoSource_linux_x64.zip"
-        dest: "/nop/nopCommerce_4.60.4_NoSource_linux_x64.zip"
+        url:  "https://github.com/nopSolutions/nopCommerce/releases/download/release-4.60.4/nopCommerce_4.60.4_NoSource_linux_x64.zip"
+        dest: "cloud/nopCommerce_4.60.4_NoSource_linux_x64.zip"
     - name: install unzip
       ansible.builtin.apt:
         name: unzip
         state: present
     - name: unzip the NopCommerce
       ansible.builtin.unarchive:
-        src: /nop/nopCommerce_4.60.4_NoSource_linux_x64.zip
-        dest: /nop
+        src: cloud/nopCommerce_4.60.4_NoSource_linux_x64.zip
+        dest: cloud
         remote_src: yes
     - name: creating a folder bin
       ansible.builtin.file:
-        path: /nop/bin
+        path: cloud/bin
         mode: '0755'
         state: directory
         recurse: yes
     - name: create a folder logs
       ansible.builtin.file:
-        path: /nop/logs
+        path: cloud/logs
         mode: '0755'
         state: directory
         recurse: yes
