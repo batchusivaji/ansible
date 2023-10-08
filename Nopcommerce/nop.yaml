@@ -19,28 +19,28 @@
     - name: download NopCommerce
       ansible.builtin.get_url:
         url: "https://github.com/nopSolutions/nopCommerce/releases/download/release-4.60.4/nopCommerce_4.60.4_NoSource_linux_x64.zip"
-        dest: "nop/nopCommerce_4.60.4_NoSource_linux_x64.zip"
+        dest: "/nop/nopCommerce_4.60.4_NoSource_linux_x64.zip"
     - name: install unzip
       ansible.builtin.apt:
         name: unzip
         state: present
     - name: unzip the NopCommerce
       ansible.builtin.unarchive:
-        src: nop/nopCommerce_4.60.4_NoSource_linux_x64.zip
-        dest: /home/dev/nop
+        src: /nop/nopCommerce_4.60.4_NoSource_linux_x64.zip
+        dest: /nop
         remote_src: yes
     - name: creating a folder bin
       ansible.builtin.file:
-        path: nop/bin
+        path: /nop/bin
         mode: '0755'
         state: directory
         recurse: yes
     - name: create a folder logs
       ansible.builtin.file:
-        path: nop/logs
+        path: /nop/logs
         mode: '0755'
         state: directory
         recurse: yes
 
     - name: start the NopCommerce
-      ansible.builtin.command: "nop/dontet Nop.Web.dll --urls 'http://0.0.0.0:5000'"
+      ansible.builtin.command: "/nop/dontet Nop.Web.dll --urls 'http://0.0.0.0:5000'"
