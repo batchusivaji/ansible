@@ -15,6 +15,7 @@
         group: nop
         mode: '0755'
         state: directory
+        recurse: yes
     # - name: change directory to nop
     #   ansible.builtin.shell: cd /nop
     # - name: download NopCommerce
