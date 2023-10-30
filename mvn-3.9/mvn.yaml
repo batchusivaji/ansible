@@ -22,15 +22,16 @@
         dest: /opt
         remote_src: yes
         creates: /opt/apache-maven-3.9.0  # This step will only run if the directory does not exist
-    - name: set the environment variables
-      environment:
-        PATH: /opt/apache-maven-3.9.0/bin:{{ ansible_env.PATH }}
-        # path: /etc/environment  # You can change this path to /etc/profile or /etc/bash.bashrc based on your system
-        # line: 'export PATH=/opt/apache-maven-3.9.0/bin:$PATH'
-        # state: present
-    # - name: Source ~/.bashrc
-    #   command: source ~/.bashrc
-    #   args:
-    #     warn: no
-    #   environment:
-    #     PATH: "{{ ansible_env.PATH }}"
+    - name: Create maven symlink to /usr/bin
+      file:
+        src: opt/apache-maven-3.9.0/bin/mvn
+        dest: /usr/bin/mvn
+        state: link
+    - name: Configure maven and its environment variables
+      lineinfile:
+        dest: /etc/environment
+        line: 'PATH=$PATH:opt/apache-maven-3.9.0/bin'
+        create: yes
+        state: present
+    - name: save the environment variables
+      shell: source /etc/environment
