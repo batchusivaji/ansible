@@ -3,10 +3,16 @@
   become: yes
   hosts: all
   tasks:
+    - name: create a directory cloud
+      ansible.builtin.file:
+        path: cloud
+        mode: '0755'
+        state: directory
+        recurse: yes
     - name: cloning spc
       ansible.builtin.git:
         repo: 'https://github.com/spring-projects/spring-petclinic.git'
-        dest: /tmp/spring-petclinic
+        dest: /cloud/spring-petclinic
         clone: yes
         recursive: yes
         remote: yes
@@ -22,13 +28,13 @@
         state: present
         update_cache: yes
       
-    - name: Download Maven 3.9
-      ansible.builtin.get_url:
-        url: 'https://dlcdn.apache.org/maven/maven-3/3.9.5/binaries/apache-maven-3.9.5-bin.tar.gz'
-        dest: /opt/apache-maven-3.9.5
-        remote_src: yes
+    # - name: Download Maven 3.9
+    #   ansible.builtin.get_url:
+    #     url: 'https://dlcdn.apache.org/maven/maven-3/3.9.5/binaries/apache-maven-3.9.5-bin.tar.gz'
+    #     dest: /opt/apache-maven-3.9.5
+    #     remote_src: yes
 
-    - name: set the environment variables
-      shell: 'export PATH=$PATH:/opt/apache-maven-3.9.0/bin'
-    - name: save the environment variables
-      shell: source /etc/environment
+    # - name: set the environment variables
+    #   shell: 'export PATH=$PATH:/opt/apache-maven-3.9.0/bin'
+    # - name: save the environment variables
+    #   shell: source /etc/environment
