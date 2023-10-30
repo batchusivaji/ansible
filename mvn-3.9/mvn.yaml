@@ -24,7 +24,7 @@
         creates: /opt/apache-maven-3.9.0  # This step will only run if the directory does not exist
     - name: set the environment variables
       environment:
-        PATH: /var/local/nvm/versions/node/v4.2.1/bin:{{ ansible_env.PATH }}
+        PATH: /opt/apache-maven-3.9.0/bin:{{ ansible_env.PATH }}
         # path: /etc/environment  # You can change this path to /etc/profile or /etc/bash.bashrc based on your system
         # line: 'export PATH=/opt/apache-maven-3.9.0/bin:$PATH'
         # state: present
