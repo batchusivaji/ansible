@@ -27,7 +27,7 @@
     #     src: /opt/apache-maven-3.9.0
     #     dest:  /opt/maven
     #     state: link
-    # - name: Configure maven and its environment variables
+    - name: Configure maven and its environment variables
       lineinfile:
         dest: /etc/environment
         line: 'PATH=$PATH:opt/apache-maven-3.9.0/bin'
