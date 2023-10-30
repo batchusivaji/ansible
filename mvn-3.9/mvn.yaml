@@ -30,7 +30,7 @@
     - name: Configure maven and its environment variables
       lineinfile:
         dest: /etc/environment
-        line: 'PATH=$PATH:opt/apache-maven-3.9.0/bin'
+        line: 'PATH=$PATH:/opt/apache-maven-3.9.5/bin'
         create: yes
         state: present
     - name: save the environment variables
