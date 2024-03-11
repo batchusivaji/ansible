@@ -55,7 +55,7 @@ What is required in Push Based CM:
 
 	puppet ----> 2005	pull
 	chef ------->2008	pull
-	ansible ----->2011	push
+	ansible ----->2011 push
 
 how ansible work?
 	ansible is working on push based mechanisam. push based means here server(master) will push the code into the nodes(slaves).
